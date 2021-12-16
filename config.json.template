@@ -1,0 +1,11 @@
+{
+    "jcefRepo": "https://bitbucket.org/chromiumembedded/java-cef.git",
+    "jcefRepoCommitUrl": "https://bitbucket.org/chromiumembedded/java-cef/commits/",
+    "initRef": "ae6912a705e6a2a60f0f156fcc2e8c03bf8285c4",
+    "jcefBuildRepo": "jcefmaven/jcefbuild",
+    "jcefBuildWorkflow": "build-all.yml",
+    "jcefMavenRepo": "jcefmaven/jcefmaven",
+    "jcefMavenWorkflow": "maven-release.yml",
+    "botUser": "jcefmavenbot",
+    "botPAT": "<TOKEN>"
+}
