@@ -7,5 +7,7 @@
     "jcefMavenRepo": "jcefmaven/jcefmaven",
     "jcefMavenWorkflow": "maven-release.yml",
     "botUser": "jcefmavenbot",
-    "botPAT": "<TOKEN>"
+    "botPAT": "{TOKEN}",
+    "enableBuildModule": {BUILD},
+    "enableIssueModule": {ISSUE}
 }

@@ -1,31 +1,23 @@
-package me.friwi.jcefmavenbot;
+package me.friwi.jcefmavenbot.buildissuer;
 
-import me.friwi.jcefmavenbot.buildissuer.GitRefResolver;
-import me.friwi.jcefmavenbot.github.GitHubAPIPaginatedListRequest;
-import me.friwi.jcefmavenbot.github.GitHubRequestAuthorization;
 import me.friwi.jcefmavenbot.github.api.GitHubAPIDispatchWorkflowRequest;
 import me.friwi.jcefmavenbot.github.api.GitHubAPIReleasesRequest;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.*;
 
-public class BuildIssuerMain {
+import static me.friwi.jcefmavenbot.JCefMavenBot.CONFIG;
+
+public class BuildIssuer {
     public static final int EXPECTED_ASSETS = 12;
 
-    public static JSONObject CONFIG;
-
-    public static void main(String[] args) throws IOException, ParseException {
-        //Load config
-        CONFIG = (JSONObject) new JSONParser().parse(new InputStreamReader(new FileInputStream("config.json")));
-
-        //Set auth info
-        GitHubRequestAuthorization.init((String) CONFIG.get("botUser"), (String) CONFIG.get("botPAT"));
+    public static void issueBuilds() throws IOException, ParseException {
+        System.out.println("################################");
+        System.out.println("#         Build Module         #");
+        System.out.println("################################\n");
 
         //Fetch git info
         GitRefResolver.init((String) CONFIG.get("jcefRepo"));

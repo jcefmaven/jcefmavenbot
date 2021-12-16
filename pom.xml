@@ -33,7 +33,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>me.friwi.jcefmavenbot.BuildIssuerMain</mainClass>
+                            <mainClass>me.friwi.jcefmavenbot.JCefMavenBot</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
