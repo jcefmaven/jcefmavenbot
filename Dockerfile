@@ -41,4 +41,4 @@ RUN chmod +x /usr/local/bin/docker-entrypoint
 
 ENTRYPOINT ["docker-entrypoint"]
 
-CMD ["java", "-jar", "output-sync.jar"]
+CMD ["java", "-jar", "jcefmavenbot.jar"]
