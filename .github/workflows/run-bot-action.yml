@@ -1,8 +1,6 @@
-name: issue-builds
+name: run-bot
 
-on:
-  schedule:
-    - cron:  '18,48 * * * *'
+on: workflow_dispatch
 
 jobs:
   jcefmavenbot:
@@ -13,4 +11,4 @@ jobs:
       - name: Run jcefmavenbot build issuer module
         run: |
           chmod +x run.sh
-          ./run.sh BUILD ${{ secrets.DOCKERHUB_REPOSITORY }} ${{ secrets.JCEFMAVEN_BOT_PAT }}
+          ./run.sh BOTH ${{ secrets.DOCKERHUB_REPOSITORY }} ${{ secrets.JCEFMAVEN_BOT_PAT }}
