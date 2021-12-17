@@ -27,7 +27,7 @@ case $1 in
     ;;
 
   *)
-    echo -"Err: Unknown module!"
+    echo "Err: Unknown module!"
     exit 1
     ;;
 esac

@@ -26,6 +26,7 @@ public class JCefMavenBot {
         if((Boolean)CONFIG.get("enableBuildModule")){
             modules++;
             BuildIssuer.issueBuilds();
+            System.out.println();
         }
 
         //Run issue module

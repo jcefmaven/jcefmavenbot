@@ -1,0 +1,16 @@
+name: issue-builds
+
+on:
+  schedule:
+    - cron:  '18,48 * * * *'
+
+jobs:
+  jcefmavenbot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run jcefmavenbot build issuer module
+        run: |
+          chmod +x run.sh
+          ./run.sh BUILD ${{ secrets.DOCKERHUB_REPOSITORY }} ${{ secrets.JCEFMAVEN_BOT_PAT }}
