@@ -59,16 +59,37 @@ public class BuildIssuer {
         //Fetch release info of jcefmaven
         JSONArray jcefmaven = new GitHubAPIReleasesRequest((String) CONFIG.get("jcefMavenRepo")).performRequest(true);
         List<String> jcefmaven_commits = new LinkedList<>();
+        Map<String, String> commit_to_jcefmaven_version = new HashMap<>();
         for(Object object : jcefmaven) {
             JSONObject release = (JSONObject) object;
             String body = (String) release.get("body");
             String commit_id = body.substring(body.indexOf(jcefRepoCommitUrl) + jcefRepoCommitUrl.length());
             commit_id = commit_id.substring(0, commit_id.indexOf(")"));
             jcefmaven_commits.add(commit_id);
+            int inds = body.indexOf("<version>");
+            int inde = body.indexOf("</version>");
+            if(inds!=-1 && inde!=-1){
+                commit_to_jcefmaven_version.put(commit_id, body.substring(inds+9, inde));
+            }
         }
         System.out.println();
         System.out.println("jcefmaven releases fetched:");
         System.out.println(Arrays.toString(jcefmaven_commits.toArray(new String[0])));
+        System.out.println();
+
+        //Fetch release info of jcefsampleapp
+        JSONArray jcefsampleapp = new GitHubAPIReleasesRequest((String) CONFIG.get("jcefSampleAppRepo")).performRequest(true);
+        List<String> jcefsampleapp_commits = new LinkedList<>();
+        for(Object object : jcefsampleapp) {
+            JSONObject release = (JSONObject) object;
+            String body = (String) release.get("body");
+            String commit_id = body.substring(body.indexOf(jcefRepoCommitUrl) + jcefRepoCommitUrl.length());
+            commit_id = commit_id.substring(0, commit_id.indexOf(")"));
+            jcefsampleapp_commits.add(commit_id);
+        }
+        System.out.println();
+        System.out.println("jcefsampleapp releases fetched:");
+        System.out.println(Arrays.toString(jcefsampleapp_commits.toArray(new String[0])));
         System.out.println();
 
         //Issue missing jcefbuild builds
@@ -84,7 +105,7 @@ public class BuildIssuer {
             //Begin with the earliest version
             index = commits.size()-1;
         }
-        //Trigger builds
+        //Trigger builds for jcefbuild
         if(index>=0){
             System.out.println("JCEFBUILD> Triggering a build for "+commits.get(index));
             JSONObject inputs = new JSONObject();
@@ -97,6 +118,8 @@ public class BuildIssuer {
             //Index is <0, which indicates that there is nothing to build
             System.out.println("JCEFBUILD> Builds are up to date");
         }
+
+
 
         //Issue missing jcefmaven builds
         //Only one build may be scheduled at a time, as GitHub Packages
@@ -114,7 +137,7 @@ public class BuildIssuer {
             //Begin with the earliest version
             index = jcefbuild_commits.size()-1;
         }
-        //Trigger builds
+        //Trigger builds for jcefmaven
         if(index>=0){
             String commit = jcefbuild_commits.get(index);
             Integer assets = commit_to_artifact_amount.get(commit);
@@ -125,17 +148,68 @@ public class BuildIssuer {
                 if(build_meta==null){
                     System.out.println("JCEFMAVEN> No build meta yet on jcefbuild build "+commit);
                 }else {
-                    System.out.println("JCEFMAVEN> Triggering a build for " + commit + " ("+build_meta+")");
-                    JSONObject inputs = new JSONObject();
-                    inputs.put("build_meta", build_meta);
-                    new GitHubAPIDispatchWorkflowRequest((String) CONFIG.get("jcefMavenRepo"), (String) CONFIG.get("jcefMavenWorkflow"), inputs)
-                            .performRequest(true);
-                    System.out.println("JCEFMAVEN> Build triggered");
+                    //Check that last jcefmaven build is already synced
+                    if(jcefmaven_commits.size()>0 && !MavenCentralSyncChecker.checkAllSynced(
+                            commit_to_jcefmaven_version.get(jcefmaven_commits.get(0))
+                    )){
+                        System.out.println("JCEFMAVEN> Delaying build, as the previous one is not synced yet");
+                    }else{
+                        System.out.println("JCEFMAVEN> Triggering a build for " + commit + " ("+build_meta+")");
+                        JSONObject inputs = new JSONObject();
+                        inputs.put("build_meta", build_meta);
+                        new GitHubAPIDispatchWorkflowRequest((String) CONFIG.get("jcefMavenRepo"), (String) CONFIG.get("jcefMavenWorkflow"), inputs)
+                                 .performRequest(true);
+                        System.out.println("JCEFMAVEN> Build triggered");
+                    }
                 }
             }
         }else{
             //Index is <0, which indicates that there is nothing to build
             System.out.println("JCEFMAVEN> Builds are up to date");
+        }
+
+
+
+        //Issue missing jcefsampleapp builds
+        //Only issue builds for versions that are already fully synced!
+        index = -1;
+        if(jcefsampleapp_commits.size()>0){
+            //There have been builds already
+            //Locate the last build in all commits and get the commit
+            //that is one step newer
+            index = jcefmaven_commits.indexOf(jcefsampleapp_commits.get(0))-1;
+        }else{
+            //There have been no builds yet
+            //Begin with the earliest version
+            index = jcefmaven_commits.size()-1;
+        }
+        //Trigger builds for jcefsampleapp
+        if(index>=0){
+            String commit = jcefmaven_commits.get(index);
+            String mvn_version = commit_to_jcefmaven_version.get(commit);
+            if(mvn_version==null){
+                System.out.println("JCEFSAMPLEAPP> No maven version yet on jcefmaven build " + commit);
+            } else {
+                if (!MavenCentralSyncChecker.checkAllSynced(mvn_version)) {
+                    System.out.println("JCEFSAMPLEAPP> Still waiting on central sync for " + mvn_version);
+                } else {
+                    String build_meta = commit_to_build_meta_url.get(commit);
+                    if (build_meta == null) {
+                        System.out.println("JCEFSAMPLEAPP> No build meta yet on jcefbuild build " + commit);
+                    } else {
+                        System.out.println("JCEFSAMPLEAPP> Triggering a build for " + commit + " (" + mvn_version + " | " + build_meta + ")");
+                        JSONObject inputs = new JSONObject();
+                        inputs.put("build_meta", build_meta);
+                        inputs.put("mvn_version", mvn_version);
+                        new GitHubAPIDispatchWorkflowRequest((String) CONFIG.get("jcefSampleAppRepo"), (String) CONFIG.get("jcefSampleAppWorkflow"), inputs)
+                                 .performRequest(true);
+                            System.out.println("JCEFSAMPLEAPP> Build triggered");
+                    }
+                }
+            }
+        }else{
+            //Index is <0, which indicates that there is nothing to build
+            System.out.println("JCEFSAMPLE> Builds are up to date");
         }
     }
 }

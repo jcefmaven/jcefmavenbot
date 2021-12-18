@@ -6,6 +6,8 @@
     "jcefBuildWorkflow": "build-all.yml",
     "jcefMavenRepo": "jcefmaven/jcefmaven",
     "jcefMavenWorkflow": "maven-release.yml",
+    "jcefSampleAppRepo": "jcefmaven/jcefsampleapp",
+    "jcefSampleAppWorkflow": "jcefsampleapp-release.yml",
     "botUser": "jcefmavenbot",
     "botPAT": "{TOKEN}",
     "enableBuildModule": {BUILD},
