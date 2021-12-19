@@ -91,6 +91,10 @@ public class TestReportIssueWorker {
                 for(String s : strings){
                     String[] args = s.split(" ");
                     if(args.length>=3){
+                        //Trim inputs
+                        for(int i = 0; i<3; i++) {
+                            args[i] = args[i].trim();
+                        }
                         if(args[0].equals("@"+BOT_USER.toUpperCase(Locale.ENGLISH))
                             && (args[1].equals("MARK") || args[1].equals("RESOLVE"))){
                             EnumTestResult result = EnumTestResult.fromString(args[2]);
