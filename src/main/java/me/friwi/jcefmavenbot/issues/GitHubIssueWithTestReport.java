@@ -90,6 +90,7 @@ public class GitHubIssueWithTestReport {
         if(sampleapp==null)err.add("did not specify whether you used the sample app");
         Boolean sampleapp1 = parseYesNo(sampleapp);
         if(sampleapp1==null&&sampleapp!=null)err.add("specified an invalid value in the sample app section");
+        if(!sampleapp1)err.add("did not test with the sample app");
 
         //Verify platform
         EnumPlatform platform = EnumPlatform.fromOSAndArch(os1, arch1);
@@ -118,7 +119,7 @@ public class GitHubIssueWithTestReport {
         }
         index++; //We want the next line
         if(index > 0 && index < lines.length){
-            return lines[index];
+            return lines[index].trim();
         }
         return null; //Not found
     }
