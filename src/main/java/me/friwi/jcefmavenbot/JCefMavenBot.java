@@ -2,6 +2,8 @@ package me.friwi.jcefmavenbot;
 
 import me.friwi.jcefmavenbot.buildissuer.BuildIssuer;
 import me.friwi.jcefmavenbot.github.GitHubRequestAuthorization;
+import me.friwi.jcefmavenbot.issues.HttpURLConnectionPatch;
+import me.friwi.jcefmavenbot.issues.IssueModule;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -13,7 +15,11 @@ import java.io.InputStreamReader;
 public class JCefMavenBot {
     public static JSONObject CONFIG;
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) throws IOException, ParseException, NoSuchFieldException, IllegalAccessException {
+        //Allow http patch
+        //Only works up to java 11
+        HttpURLConnectionPatch.allowPatchMethod();
+
         //Load config
         CONFIG = (JSONObject) new JSONParser().parse(new InputStreamReader(new FileInputStream("config.json")));
 
@@ -32,10 +38,7 @@ public class JCefMavenBot {
         //Run issue module
         if((Boolean)CONFIG.get("enableIssueModule")){
             modules++;
-            //TODO
-            System.out.println("################################");
-            System.out.println("#         Issue Module         #");
-            System.out.println("################################\n");
+            IssueModule.processIssues();
         }
 
         if(modules==0){

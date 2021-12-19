@@ -42,19 +42,19 @@ public class GitHubAPIRequest<T extends Object> {
                 for(Map.Entry<Object, Object> entry : (Set<Map.Entry<Object, Object>>)attributes.entrySet()){
                     params += (params.isEmpty()?"?":"&")+entry.getKey()+"="+entry.getValue();
                 }
-                connection = (HttpURLConnection) new URL(API_SERVER+endpoint+params).openConnection();
+                connection = (HttpURLConnection) new URL((endpoint.startsWith("https://")?"":API_SERVER)+endpoint+params).openConnection();
             }else{
-                //POST
-                connection = (HttpURLConnection) new URL(API_SERVER+endpoint).openConnection();
+                //POST, PATCH, PUT
+                connection = (HttpURLConnection) new URL((endpoint.startsWith("https://")?"":API_SERVER)+endpoint).openConnection();
             }
             connection.addRequestProperty("Accept", "application/vnd.github.v3+json");
             if(authorize)GitHubRequestAuthorization.authorizeRequest(connection);
-            if(method==GitHubAPIRequestMethod.POST){
-                //POST
+            if(method!=GitHubAPIRequestMethod.GET){
+                //POST, PATCH, PUT
                 byte[] postData = attributes.toJSONString().getBytes( StandardCharsets.UTF_8 );
                 int postDataLength = postData.length;
                 connection.setDoOutput(true);
-                connection.setRequestMethod( "POST" );
+                connection.setRequestMethod( method.name() );
                 connection.setRequestProperty( "Content-Type", "application/json");
                 connection.setRequestProperty( "Charset", "utf-8");
                 connection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));

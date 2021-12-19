@@ -9,6 +9,7 @@
     "jcefSampleAppRepo": "jcefmaven/jcefsampleapp",
     "jcefSampleAppWorkflow": "jcefsampleapp-release.yml",
     "botUser": "jcefmavenbot",
+    "maintainerUser": "FriwiDev",
     "botPAT": "{TOKEN}",
     "enableBuildModule": {BUILD},
     "enableIssueModule": {ISSUE}
