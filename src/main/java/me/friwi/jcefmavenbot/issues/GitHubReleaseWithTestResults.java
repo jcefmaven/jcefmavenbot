@@ -6,7 +6,7 @@ import org.json.simple.JSONObject;
 import java.io.IOException;
 
 public class GitHubReleaseWithTestResults{
-    public static final String TABLE_PATTERN = "|---|---|---|---|\n";
+    public static final String TABLE_PATTERN = "|---|---|---|---|";
 
     private GitHubRelease release;
 
@@ -27,13 +27,13 @@ public class GitHubReleaseWithTestResults{
     }
 
     public static GitHubReleaseWithTestResults fromGitHubRelease(GitHubRelease release){
-        String prefix = release.getBody().substring(0, release.getBody().indexOf(TABLE_PATTERN)+TABLE_PATTERN.length());
-        String suffix = release.getBody().substring(prefix.length());
+        String prefix = release.getBody().substring(0, release.getBody().indexOf(TABLE_PATTERN)+TABLE_PATTERN.length())+"\n";
+        String suffix = release.getBody().substring(prefix.length()).trim();
         TestResult[][] testMatrix = new TestResult[EnumArch.values().length][];
         for(int i = 0; i < EnumArch.values().length; i++){
             int ind = suffix.indexOf("\n")+1;
             if(ind==0)ind = suffix.length(); //Consume everything if EOF
-            String row = suffix.substring(0, ind);
+            String row = suffix.substring(0, ind).trim();
             suffix = suffix.substring(ind);
             String[] parts = row.split("\\|");
             testMatrix[i] = new TestResult[EnumOS.values().length];
@@ -43,7 +43,7 @@ public class GitHubReleaseWithTestResults{
             }
         }
         String mavenVersion = release.getBody().substring(release.getBody().indexOf("<version>")+9);
-        mavenVersion = mavenVersion.substring(0, mavenVersion.indexOf("</version>"));
+        mavenVersion = mavenVersion.substring(0, mavenVersion.indexOf("</version>")).trim();
         return new GitHubReleaseWithTestResults(release, testMatrix, mavenVersion, prefix, suffix);
     }
 
