@@ -14,10 +14,10 @@ import java.util.Set;
 
 public class GitHubAPIRequest<T extends Object> {
     public static final String API_SERVER = "https://api.github.com";
-    private static final JSONParser PARSER = new JSONParser();
+    protected static final JSONParser PARSER = new JSONParser();
 
     private GitHubAPIRequestMethod method;
-    private String endpoint;
+    protected String endpoint;
     private JSONObject attributes;
 
     public GitHubAPIRequest(GitHubAPIRequestMethod method, String endpoint){

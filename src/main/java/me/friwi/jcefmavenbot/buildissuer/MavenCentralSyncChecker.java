@@ -17,8 +17,7 @@ public class MavenCentralSyncChecker {
      * @param mvn_version v1.0.0+jcef...
      * @return true if all are found
      */
-    public static boolean checkAllSynced(String mvn_version){
-        String jcef_version = mvn_version.substring(mvn_version.indexOf("+")+1);
+    public static boolean checkAllSynced(String mvn_version, String jcef_version){
         if(!checkSynced("me.friwi", "jcefmaven", mvn_version))return false;
         if(!checkSynced("me.friwi", "jcef-api", jcef_version))return false;
         return true;

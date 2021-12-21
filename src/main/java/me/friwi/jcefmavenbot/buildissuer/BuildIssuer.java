@@ -1,18 +1,21 @@
 package me.friwi.jcefmavenbot.buildissuer;
 
-import me.friwi.jcefmavenbot.github.api.GitHubAPIDispatchWorkflowRequest;
-import me.friwi.jcefmavenbot.github.api.GitHubAPIReleasesRequest;
+import me.friwi.jcefmavenbot.JCefMavenBot;
+import me.friwi.jcefmavenbot.github.api.*;
+import me.friwi.jcefmavenbot.qualitycontrol.QualityControl;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 import static me.friwi.jcefmavenbot.JCefMavenBot.CONFIG;
 
 public class BuildIssuer {
-    public static final int EXPECTED_ASSETS = 12;
+    public static final boolean PERFORM_ACTIONS = true;
+    public static final int EXPECTED_ASSETS = 13;
 
     public static void issueBuilds() throws IOException, ParseException {
         System.out.println("################################");
@@ -31,6 +34,7 @@ public class BuildIssuer {
         Map<String, Integer> commit_to_artifact_amount = new HashMap<>();
         Map<String, String> commit_to_build_meta_url = new HashMap<>();
         String jcefRepoCommitUrl = (String) CONFIG.get("jcefRepoCommitUrl");
+        Map<String, String> commit_to_cef_version = new HashMap<>();
         for(Object object : jcefbuilds){
             JSONObject release = (JSONObject) object;
             String body = (String) release.get("body");
@@ -39,12 +43,24 @@ public class BuildIssuer {
             jcefbuild_commits.add(commit_id);
             JSONArray assets = ((JSONArray) release.get("assets"));
             commit_to_artifact_amount.put(commit_id, assets.size());
-            if(assets.size()==EXPECTED_ASSETS) {
+            if(assets.size()>=EXPECTED_ASSETS-1) {
                 for (Object a : assets) {
                     JSONObject asset = (JSONObject) a;
                     if(asset.get("name").equals("build_meta.json")){
                         commit_to_build_meta_url.put(commit_id, (String) asset.get("browser_download_url"));
                         break;
+                    }
+                }
+            }
+            int inds = body.indexOf("CEF version: ");
+            if(inds!=-1){
+                String bodysub = body.substring(inds+13);
+                inds = bodysub.indexOf("CEF version: "); //JCEF version: also contains CEF version ;)
+                bodysub = bodysub.substring(inds+13);
+                if(inds!=-1){
+                    int inde = bodysub.indexOf("\n");
+                    if(inde!=-1) {
+                        commit_to_cef_version.put(commit_id, bodysub.substring(0, inde).trim());
                     }
                 }
             }
@@ -69,7 +85,7 @@ public class BuildIssuer {
             int inds = body.indexOf("<version>");
             int inde = body.indexOf("</version>");
             if(inds!=-1 && inde!=-1){
-                commit_to_jcefmaven_version.put(commit_id, body.substring(inds+9, inde));
+                commit_to_jcefmaven_version.put(commit_id, body.substring(inds+9, inde).trim());
             }
         }
         System.out.println();
@@ -111,15 +127,63 @@ public class BuildIssuer {
             JSONObject inputs = new JSONObject();
             inputs.put("repo", CONFIG.get("jcefRepo"));
             inputs.put("ref", commits.get(index));
-            new GitHubAPIDispatchWorkflowRequest((String) CONFIG.get("jcefBuildRepo"), (String) CONFIG.get("jcefBuildWorkflow"), inputs)
-                    .performRequest(true);
+            if(PERFORM_ACTIONS){
+                new GitHubAPIDispatchWorkflowRequest((String) CONFIG.get("jcefBuildRepo"), (String) CONFIG.get("jcefBuildWorkflow"), inputs)
+                        .performRequest(true);
+            }
             System.out.println("JCEFBUILD> Build triggered");
         }else{
             //Index is <0, which indicates that there is nothing to build
             System.out.println("JCEFBUILD> Builds are up to date");
         }
 
-
+        //Perform testing on jcefbuild and exclude invalid builds
+        List<String> commitsToRemove = new LinkedList<>();
+        for(Object b : jcefbuilds){
+            JSONObject release = (JSONObject) b;
+            String body = (String) release.get("body");
+            String commit_id = body.substring(body.indexOf(jcefRepoCommitUrl) + jcefRepoCommitUrl.length());
+            commit_id = commit_id.substring(0, commit_id.indexOf(")"));
+            if(commit_to_artifact_amount.get(commit_id)==EXPECTED_ASSETS-1){
+                System.out.println("QUALITY_CONTR> Checking artifacts for "+commit_id);
+                GitHubRelease r = GitHubRelease.fromJSON(release);
+                //Test!
+                if(PERFORM_ACTIONS) {
+                    List[] report = QualityControl.generateTestReport(commit_to_build_meta_url.get(commit_id));
+                    if (!QualityControl.isOK(report)) {
+                        //Open issue
+                        String short_commit = commit_id.substring(0, 7);
+                        String title = "[BUG] Build for " + short_commit + " failed";
+                        String content = "@" + CONFIG.get("maintainerUser") + " The [build for " + short_commit + "](" + r.getHtmlUrl() + ") just failed. Please check.";
+                        JSONArray labels = new JSONArray();
+                        labels.add("bug");
+                        JSONArray assignees = new JSONArray();
+                        assignees.add(CONFIG.get("maintainerUser"));
+                        JSONObject obj = (JSONObject) new GitHubAPICreateIssueRequest((String) CONFIG.get("jcefBuildRepo"), title, content, labels, assignees)
+                                .performRequest(true);
+                        String issue = obj.get("number").toString();
+                        String issueUrl = obj.get("html_url").toString();
+                        //Upload new body
+                        body = QualityControl.generateWarning(report, issue, issueUrl) + body;
+                        r.setBody(body);
+                        r.update();
+                        System.out.println("QUALITY_CONTR> Marked artifact as not successful!");
+                        commitsToRemove.add(commit_id);
+                    }
+                    //Upload
+                    JSONObject testResult = QualityControl.formatTestReport(report);
+                    r.uploadArtifact("test_report.json", testResult.toString().getBytes(StandardCharsets.UTF_8));
+                    commit_to_artifact_amount.put(commit_id, EXPECTED_ASSETS);
+                }
+                System.out.println("QUALITY_CONTR> Uploaded artifact!");
+            }else{
+                if(body.contains(">**WARNING"))commitsToRemove.add(commit_id);
+            }
+        }
+        //Ignore broken commits for maven builds
+        for(String c : commitsToRemove){
+            jcefbuild_commits.remove(c);
+        }
 
         //Issue missing jcefmaven builds
         //Only one build may be scheduled at a time, as GitHub Packages
@@ -150,16 +214,39 @@ public class BuildIssuer {
                 }else {
                     //Check that last jcefmaven build is already synced
                     if(jcefmaven_commits.size()>0 && !MavenCentralSyncChecker.checkAllSynced(
-                            commit_to_jcefmaven_version.get(jcefmaven_commits.get(0))
+                            commit_to_jcefmaven_version.get(jcefmaven_commits.get(0)),
+                            "jcef-"+jcefmaven_commits.get(0).substring(0, 7)+"+cef-"+commit_to_cef_version.get(jcefmaven_commits.get(0))
                     )){
                         System.out.println("JCEFMAVEN> Delaying build, as the previous one is not synced yet");
                     }else{
-                        System.out.println("JCEFMAVEN> Triggering a build for " + commit + " ("+build_meta+")");
-                        JSONObject inputs = new JSONObject();
-                        inputs.put("build_meta", build_meta);
-                        new GitHubAPIDispatchWorkflowRequest((String) CONFIG.get("jcefMavenRepo"), (String) CONFIG.get("jcefMavenWorkflow"), inputs)
-                                 .performRequest(true);
-                        System.out.println("JCEFMAVEN> Build triggered");
+                        SemanticVersion previousMavenVersion = SemanticVersion.fromString(jcefmaven_commits.size()>0?
+                                commit_to_jcefmaven_version.get(jcefmaven_commits.get(0)):
+                                "0.0.0");
+                        String cefver = commit_to_cef_version.get(commit);
+                        if(cefver==null){
+                            System.out.println("JCEFMAVEN> No cef version yet for "+commit);
+                        }else {
+                            cefver = cefver.substring(0, cefver.indexOf("+"));
+                            SemanticVersion currentCefVersion = SemanticVersion.fromString(cefver);
+                            String mvn_version;
+                            if (previousMavenVersion.isSamePatch(currentCefVersion)) {
+                                //Increase previous maven version by one prerelease
+                                previousMavenVersion.increasePrerelease();
+                                mvn_version = previousMavenVersion.toString();
+                            } else {
+                                //Else use new cef version
+                                mvn_version = currentCefVersion.toString();
+                            }
+                            System.out.println("JCEFMAVEN> Triggering a build for " + commit + " (" + mvn_version + ", " + build_meta + ")");
+                            JSONObject inputs = new JSONObject();
+                            inputs.put("build_meta", build_meta);
+                            inputs.put("mvn_version", mvn_version);
+                            if(PERFORM_ACTIONS) {
+                                new GitHubAPIDispatchWorkflowRequest((String) CONFIG.get("jcefMavenRepo"), (String) CONFIG.get("jcefMavenWorkflow"), inputs)
+                                        .performRequest(true);
+                            }
+                            System.out.println("JCEFMAVEN> Build triggered");
+                        }
                     }
                 }
             }
@@ -187,10 +274,11 @@ public class BuildIssuer {
         if(index>=0){
             String commit = jcefmaven_commits.get(index);
             String mvn_version = commit_to_jcefmaven_version.get(commit);
+            String cef_version = "jcef-"+commit.substring(0, 7)+"+cef-"+commit_to_cef_version.get(commit);
             if(mvn_version==null){
                 System.out.println("JCEFSAMPLEAPP> No maven version yet on jcefmaven build " + commit);
             } else {
-                if (!MavenCentralSyncChecker.checkAllSynced(mvn_version)) {
+                if (!MavenCentralSyncChecker.checkAllSynced(mvn_version, cef_version)) {
                     System.out.println("JCEFSAMPLEAPP> Still waiting on central sync for " + mvn_version);
                 } else {
                     String build_meta = commit_to_build_meta_url.get(commit);
@@ -201,9 +289,11 @@ public class BuildIssuer {
                         JSONObject inputs = new JSONObject();
                         inputs.put("build_meta", build_meta);
                         inputs.put("mvn_version", mvn_version);
-                        new GitHubAPIDispatchWorkflowRequest((String) CONFIG.get("jcefSampleAppRepo"), (String) CONFIG.get("jcefSampleAppWorkflow"), inputs)
+                        if(PERFORM_ACTIONS){
+                            new GitHubAPIDispatchWorkflowRequest((String) CONFIG.get("jcefSampleAppRepo"), (String) CONFIG.get("jcefSampleAppWorkflow"), inputs)
                                  .performRequest(true);
-                            System.out.println("JCEFSAMPLEAPP> Build triggered");
+                        }
+                        System.out.println("JCEFSAMPLEAPP> Build triggered");
                     }
                 }
             }

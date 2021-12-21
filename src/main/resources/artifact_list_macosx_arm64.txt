@@ -1,0 +1,303 @@
+1662:/LICENSE.txt
+6470:/README.txt
+581:/compile.sh
+8156:/gluegen.LICENSE.txt
+19498:/jogl.LICENSE.txt
+1968:/bin/jcef_app.app/Contents/Info.plist
+8:/bin/jcef_app.app/Contents/PkgInfo
+168126792:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Chromium Embedded Framework
+526384:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/libEGL.dylib
+8965264:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/libGLESv2.dylib
+540424:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/libswiftshader_libEGL.dylib
+15753312:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/libswiftshader_libGLESv2.dylib
+17201128:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/libvk_swiftshader.dylib
+110:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/vk_swiftshader_icd.json
+1060:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/Info.plist
+522380:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/chrome_100_percent.pak
+934463:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/chrome_200_percent.pak
+10215872:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/icudtl.dat
+6551253:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/resources.pak
+49122:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/snapshot_blob.bin
+164448:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/v8_context_snapshot.arm64.bin
+502537:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/am.lproj/locale.pak
+532699:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/ar.lproj/locale.pak
+575842:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/bg.lproj/locale.pak
+740892:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/bn.lproj/locale.pak
+351879:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/ca.lproj/locale.pak
+359572:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/cs.lproj/locale.pak
+325378:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/da.lproj/locale.pak
+353053:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/de.lproj/locale.pak
+627026:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/el.lproj/locale.pak
+292207:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/en.lproj/locale.pak
+287648:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/en_GB.lproj/locale.pak
+348529:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/es.lproj/locale.pak
+347064:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/es_419.lproj/locale.pak
+314165:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/et.lproj/locale.pak
+506682:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/fa.lproj/locale.pak
+320990:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/fi.lproj/locale.pak
+360849:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/fil.lproj/locale.pak
+377654:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/fr.lproj/locale.pak
+711701:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/gu.lproj/locale.pak
+440811:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/he.lproj/locale.pak
+739013:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/hi.lproj/locale.pak
+346644:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/hr.lproj/locale.pak
+372899:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/hu.lproj/locale.pak
+309713:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/id.lproj/locale.pak
+341582:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/it.lproj/locale.pak
+420780:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/ja.lproj/locale.pak
+825944:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/kn.lproj/locale.pak
+350888:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/ko.lproj/locale.pak
+372907:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/lt.lproj/locale.pak
+372966:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/lv.lproj/locale.pak
+865735:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/ml.lproj/locale.pak
+699616:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/mr.lproj/locale.pak
+323974:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/ms.lproj/locale.pak
+319315:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/nb.lproj/locale.pak
+327127:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/nl.lproj/locale.pak
+360461:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/pl.lproj/locale.pak
+342000:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/pt_BR.lproj/locale.pak
+345426:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/pt_PT.lproj/locale.pak
+354407:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/ro.lproj/locale.pak
+567832:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/ru.lproj/locale.pak
+366069:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/sk.lproj/locale.pak
+348909:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/sl.lproj/locale.pak
+539810:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/sr.lproj/locale.pak
+319018:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/sv.lproj/locale.pak
+329722:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/sw.lproj/locale.pak
+844404:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/ta.lproj/locale.pak
+789937:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/te.lproj/locale.pak
+660856:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/th.lproj/locale.pak
+339400:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/tr.lproj/locale.pak
+568444:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/uk.lproj/locale.pak
+400707:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/vi.lproj/locale.pak
+294634:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/zh_CN.lproj/locale.pak
+291270:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/zh_TW.lproj/locale.pak
+989:/bin/jcef_app.app/Contents/Frameworks/jcef Helper (GPU).app/Contents/Info.plist
+1047470:/bin/jcef_app.app/Contents/Frameworks/jcef Helper (GPU).app/Contents/MacOS/jcef Helper (GPU)
+1001:/bin/jcef_app.app/Contents/Frameworks/jcef Helper (Plugin).app/Contents/Info.plist
+1047473:/bin/jcef_app.app/Contents/Frameworks/jcef Helper (Plugin).app/Contents/MacOS/jcef Helper (Plugin)
+1009:/bin/jcef_app.app/Contents/Frameworks/jcef Helper (Renderer).app/Contents/Info.plist
+1047475:/bin/jcef_app.app/Contents/Frameworks/jcef Helper (Renderer).app/Contents/MacOS/jcef Helper (Renderer)
+967:/bin/jcef_app.app/Contents/Frameworks/jcef Helper.app/Contents/Info.plist
+1047464:/bin/jcef_app.app/Contents/Frameworks/jcef Helper.app/Contents/MacOS/jcef Helper
+7607:/bin/jcef_app.app/Contents/Java/gluegen-rt-natives-macosx-universal.jar
+360957:/bin/jcef_app.app/Contents/Java/gluegen-rt.jar
+180103:/bin/jcef_app.app/Contents/Java/jcef-tests.jar
+198135:/bin/jcef_app.app/Contents/Java/jcef.jar
+463469:/bin/jcef_app.app/Contents/Java/jogl-all-natives-macosx-universal.jar
+3568302:/bin/jcef_app.app/Contents/Java/jogl-all.jar
+1876767:/bin/jcef_app.app/Contents/Java/junit-platform-console-standalone-1.4.2.jar
+1075274:/bin/jcef_app.app/Contents/Java/libjcef.dylib
+152744:/bin/jcef_app.app/Contents/MacOS/JavaAppLauncher
+386012:/bin/jcef_app.app/Contents/Resources/CefIcon.icns
+1156:/bin/jcef_app.app/Contents/Resources/be.lproj/Localizable.strings
+831:/bin/jcef_app.app/Contents/Resources/cs.lproj/Localizable.strings
+804:/bin/jcef_app.app/Contents/Resources/de.lproj/Localizable.strings
+733:/bin/jcef_app.app/Contents/Resources/en.lproj/Localizable.strings
+871:/bin/jcef_app.app/Contents/Resources/fr.lproj/Localizable.strings
+792:/bin/jcef_app.app/Contents/Resources/ia.lproj/Localizable.strings
+789:/bin/jcef_app.app/Contents/Resources/it.lproj/Localizable.strings
+969:/bin/jcef_app.app/Contents/Resources/ja.lproj/Localizable.strings
+773:/bin/jcef_app.app/Contents/Resources/nl.lproj/Localizable.strings
+735:/bin/jcef_app.app/Contents/Resources/no.lproj/Localizable.strings
+771:/bin/jcef_app.app/Contents/Resources/pt_BR.lproj/Localizable.strings
+19450:/docs/allclasses-frame.html
+16990:/docs/allclasses-noframe.html
+40016:/docs/constant-values.html
+8004:/docs/help-doc.html
+383085:/docs/index-all.html
+2907:/docs/index.html
+1364:/docs/overview-frame.html
+4933:/docs/overview-summary.html
+32174:/docs/overview-tree.html
+106:/docs/package-list
+827:/docs/script.js
+12842:/docs/stylesheet.css
+15594:/docs/org/cef/CefApp.CefAppState.html
+13930:/docs/org/cef/CefApp.CefVersion.html
+25500:/docs/org/cef/CefApp.html
+195788:/docs/org/cef/CefClient.html
+10080:/docs/org/cef/CefSettings.ColorType.html
+15863:/docs/org/cef/CefSettings.LogSeverity.html
+26479:/docs/org/cef/CefSettings.html
+9448:/docs/org/cef/OS.html
+7363:/docs/org/cef/SystemBootstrap.Loader.html
+10917:/docs/org/cef/SystemBootstrap.html
+1644:/docs/org/cef/package-frame.html
+7013:/docs/org/cef/package-summary.html
+8500:/docs/org/cef/package-tree.html
+47893:/docs/org/cef/browser/CefBrowser.html
+10230:/docs/org/cef/browser/CefBrowserFactory.html
+8064:/docs/org/cef/browser/CefBrowserWindow.html
+16335:/docs/org/cef/browser/CefFrame.html
+11088:/docs/org/cef/browser/CefMessageRouter.CefMessageRouterConfig.html
+26384:/docs/org/cef/browser/CefMessageRouter.html
+12293:/docs/org/cef/browser/CefRequestContext.html
+1718:/docs/org/cef/browser/package-frame.html
+6957:/docs/org/cef/browser/package-summary.html
+5744:/docs/org/cef/browser/package-tree.html
+9945:/docs/org/cef/browser/mac/CefBrowserWindowMac.html
+851:/docs/org/cef/browser/mac/package-frame.html
+4827:/docs/org/cef/browser/mac/package-summary.html
+4787:/docs/org/cef/browser/mac/package-tree.html
+8044:/docs/org/cef/callback/CefAuthCallback.html
+8175:/docs/org/cef/callback/CefBeforeDownloadCallback.html
+7968:/docs/org/cef/callback/CefCallback.html
+16780:/docs/org/cef/callback/CefCommandLine.html
+7667:/docs/org/cef/callback/CefCompletionCallback.html
+15070:/docs/org/cef/callback/CefContextMenuParams.EditStateFlags.html
+16509:/docs/org/cef/callback/CefContextMenuParams.MediaStateFlags.html
+15748:/docs/org/cef/callback/CefContextMenuParams.MediaType.html
+13358:/docs/org/cef/callback/CefContextMenuParams.TypeFlags.html
+22001:/docs/org/cef/callback/CefContextMenuParams.html
+8570:/docs/org/cef/callback/CefCookieVisitor.html
+16068:/docs/org/cef/callback/CefDownloadItem.html
+8585:/docs/org/cef/callback/CefDownloadItemCallback.html
+14009:/docs/org/cef/callback/CefDragData.DragOperations.html
+27670:/docs/org/cef/callback/CefDragData.html
+8852:/docs/org/cef/callback/CefFileDialogCallback.html
+8017:/docs/org/cef/callback/CefJSDialogCallback.html
+24151:/docs/org/cef/callback/CefMenuModel.MenuId.html
+15465:/docs/org/cef/callback/CefMenuModel.MenuItemType.html
+46646:/docs/org/cef/callback/CefMenuModel.html
+10159:/docs/org/cef/callback/CefNative.html
+12369:/docs/org/cef/callback/CefNativeAdapter.html
+8266:/docs/org/cef/callback/CefPdfPrintCallback.html
+8453:/docs/org/cef/callback/CefPrintDialogCallback.html
+7624:/docs/org/cef/callback/CefPrintJobCallback.html
+8879:/docs/org/cef/callback/CefQueryCallback.html
+8558:/docs/org/cef/callback/CefRunFileDialogCallback.html
+9865:/docs/org/cef/callback/CefSchemeHandlerFactory.html
+11618:/docs/org/cef/callback/CefSchemeRegistrar.html
+7762:/docs/org/cef/callback/CefStringVisitor.html
+14550:/docs/org/cef/callback/CefURLRequestClient.html
+8681:/docs/org/cef/callback/CefWebPluginInfoVisitor.html
+7988:/docs/org/cef/callback/CefWebPluginUnstableCallback.html
+5889:/docs/org/cef/callback/package-frame.html
+14695:/docs/org/cef/callback/package-summary.html
+11383:/docs/org/cef/callback/package-tree.html
+14111:/docs/org/cef/handler/CefAppHandler.html
+20095:/docs/org/cef/handler/CefAppHandlerAdapter.html
+40098:/docs/org/cef/handler/CefClientHandler.html
+14250:/docs/org/cef/handler/CefContextMenuHandler.html
+18552:/docs/org/cef/handler/CefContextMenuHandlerAdapter.html
+13184:/docs/org/cef/handler/CefCookieAccessFilter.html
+16773:/docs/org/cef/handler/CefCookieAccessFilterAdapter.html
+14057:/docs/org/cef/handler/CefDialogHandler.FileDialogMode.html
+11659:/docs/org/cef/handler/CefDialogHandler.html
+15463:/docs/org/cef/handler/CefDisplayHandler.html
+21248:/docs/org/cef/handler/CefDisplayHandlerAdapter.html
+11678:/docs/org/cef/handler/CefDownloadHandler.html
+15135:/docs/org/cef/handler/CefDownloadHandlerAdapter.html
+14110:/docs/org/cef/handler/CefDragHandler.DragOperationMask.html
+9958:/docs/org/cef/handler/CefDragHandler.html
+13372:/docs/org/cef/handler/CefFocusHandler.FocusSource.html
+12264:/docs/org/cef/handler/CefFocusHandler.html
+15684:/docs/org/cef/handler/CefFocusHandlerAdapter.html
+14079:/docs/org/cef/handler/CefJSDialogHandler.JSDialogType.html
+16544:/docs/org/cef/handler/CefJSDialogHandler.html
+21126:/docs/org/cef/handler/CefJSDialogHandlerAdapter.html
+15735:/docs/org/cef/handler/CefKeyboardHandler.CefKeyEvent.EventType.html
+15829:/docs/org/cef/handler/CefKeyboardHandler.CefKeyEvent.html
+12164:/docs/org/cef/handler/CefKeyboardHandler.html
+15182:/docs/org/cef/handler/CefKeyboardHandlerAdapter.html
+14409:/docs/org/cef/handler/CefLifeSpanHandler.html
+19448:/docs/org/cef/handler/CefLifeSpanHandlerAdapter.html
+143192:/docs/org/cef/handler/CefLoadHandler.ErrorCode.html
+16199:/docs/org/cef/handler/CefLoadHandler.html
+20717:/docs/org/cef/handler/CefLoadHandlerAdapter.html
+12310:/docs/org/cef/handler/CefMessageRouterHandler.html
+16526:/docs/org/cef/handler/CefMessageRouterHandlerAdapter.html
+17048:/docs/org/cef/handler/CefPrintHandler.html
+23516:/docs/org/cef/handler/CefPrintHandlerAdapter.html
+19866:/docs/org/cef/handler/CefRenderHandler.html
+27621:/docs/org/cef/handler/CefRenderHandlerAdapter.html
+13810:/docs/org/cef/handler/CefRequestContextHandler.html
+17622:/docs/org/cef/handler/CefRequestContextHandlerAdapter.html
+14786:/docs/org/cef/handler/CefRequestHandler.TerminationStatus.html
+27768:/docs/org/cef/handler/CefRequestHandler.html
+35609:/docs/org/cef/handler/CefRequestHandlerAdapter.html
+13716:/docs/org/cef/handler/CefResourceHandler.html
+18334:/docs/org/cef/handler/CefResourceHandlerAdapter.html
+27303:/docs/org/cef/handler/CefResourceRequestHandler.html
+35176:/docs/org/cef/handler/CefResourceRequestHandlerAdapter.html
+14958:/docs/org/cef/handler/CefScreenInfo.html
+10410:/docs/org/cef/handler/CefWindowHandler.html
+13312:/docs/org/cef/handler/CefWindowHandlerAdapter.html
+7764:/docs/org/cef/handler/package-frame.html
+19018:/docs/org/cef/handler/package-summary.html
+17532:/docs/org/cef/handler/package-tree.html
+9394:/docs/org/cef/misc/BoolRef.html
+9401:/docs/org/cef/misc/CefPageRange.html
+14116:/docs/org/cef/misc/CefPdfPrintSettings.MarginType.html
+19157:/docs/org/cef/misc/CefPdfPrintSettings.html
+23797:/docs/org/cef/misc/CefPrintSettings.ColorModel.html
+14332:/docs/org/cef/misc/CefPrintSettings.DuplexMode.html
+26238:/docs/org/cef/misc/CefPrintSettings.html
+16515:/docs/org/cef/misc/EventFlags.html
+9552:/docs/org/cef/misc/IntRef.html
+9519:/docs/org/cef/misc/StringRef.html
+1873:/docs/org/cef/misc/package-frame.html
+7358:/docs/org/cef/misc/package-summary.html
+6334:/docs/org/cef/misc/package-tree.html
+14483:/docs/org/cef/network/CefCookie.html
+17289:/docs/org/cef/network/CefCookieManager.html
+15352:/docs/org/cef/network/CefPostData.html
+13678:/docs/org/cef/network/CefPostDataElement.Type.html
+17209:/docs/org/cef/network/CefPostDataElement.html
+14895:/docs/org/cef/network/CefRequest.CefUrlRequestFlags.html
+21568:/docs/org/cef/network/CefRequest.ReferrerPolicy.html
+22215:/docs/org/cef/network/CefRequest.ResourceType.html
+17314:/docs/org/cef/network/CefRequest.TransitionFlags.html
+23930:/docs/org/cef/network/CefRequest.TransitionType.html
+30124:/docs/org/cef/network/CefRequest.html
+19834:/docs/org/cef/network/CefResponse.html
+14396:/docs/org/cef/network/CefURLRequest.Status.html
+17030:/docs/org/cef/network/CefURLRequest.html
+9322:/docs/org/cef/network/CefWebPluginInfo.html
+13499:/docs/org/cef/network/CefWebPluginManager.html
+2777:/docs/org/cef/network/package-frame.html
+9265:/docs/org/cef/network/package-summary.html
+7562:/docs/org/cef/network/package-tree.html
+5676:/tests/detailed/BrowserFrame.java
+12917:/tests/detailed/MainFrame.java
+1342:/tests/detailed/dialog/CertErrorDialog.java
+5198:/tests/detailed/dialog/CookieManagerDialog.java
+1349:/tests/detailed/dialog/DevToolsDialog.java
+6567:/tests/detailed/dialog/DownloadDialog.java
+2131:/tests/detailed/dialog/PasswordDialog.java
+4016:/tests/detailed/dialog/SearchDialog.java
+1635:/tests/detailed/dialog/ShowTextDialog.java
+14863:/tests/detailed/dialog/UrlRequestDialog.java
+7073:/tests/detailed/dialog/UrlRequestDialogReply.java
+4539:/tests/detailed/dialog/WebPluginManagerDialog.java
+3601:/tests/detailed/handler/AppHandler.java
+4868:/tests/detailed/handler/ClientSchemeHandler.java
+3787:/tests/detailed/handler/ContextMenuHandler.java
+1399:/tests/detailed/handler/DragHandler.java
+1114:/tests/detailed/handler/JSDialogHandler.java
+1203:/tests/detailed/handler/KeyboardHandler.java
+971:/tests/detailed/handler/MessageRouterHandler.java
+2523:/tests/detailed/handler/MessageRouterHandlerEx.java
+6917:/tests/detailed/handler/RequestHandler.java
+2468:/tests/detailed/handler/ResourceHandler.java
+841:/tests/detailed/handler/ResourceSetErrorHandler.java
+1738:/tests/detailed/handler/SearchSchemeHandler.java
+793:/tests/detailed/handler/binding_test.html
+2627:/tests/detailed/handler/binding_test2.html
+790:/tests/detailed/handler/localstorage.html
+24025:/tests/detailed/handler/logo.png
+444:/tests/detailed/handler/spellcheck.html
+1513:/tests/detailed/handler/transparency.html
+6662:/tests/detailed/ui/ControlPanel.java
+24781:/tests/detailed/ui/MenuBar.java
+1509:/tests/detailed/ui/StatusPanel.java
+542:/tests/detailed/util/DataUri.java
+2586:/tests/junittests/DisplayHandlerTest.java
+5547:/tests/junittests/DragDataTest.java
+10693:/tests/junittests/TestFrame.java
+1971:/tests/junittests/TestFrameTest.java
+2336:/tests/junittests/TestResourceHandler.java
+920:/tests/junittests/TestSetupContext.java
+2856:/tests/junittests/TestSetupExtension.java
+8798:/tests/simple/MainFrame.java

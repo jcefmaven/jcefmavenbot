@@ -14,15 +14,17 @@ public class GitHubRelease {
 
     private String htmlUrl;
     private String apiUrl;
+    private String uploadUrl;
 
     private GitHubRelease initialCopy = null;
 
-    protected GitHubRelease(String tagName, String name, String body, String htmlUrl, String apiUrl) {
+    protected GitHubRelease(String tagName, String name, String body, String htmlUrl, String apiUrl, String uploadUrl) {
         this.tagName = tagName;
         this.name = name;
         this.body = body;
         this.htmlUrl = htmlUrl;
         this.apiUrl = apiUrl;
+        this.uploadUrl = uploadUrl;
     }
 
     //Updating
@@ -48,7 +50,8 @@ public class GitHubRelease {
                 (String) jsonObject.get("name"),
                 (String) jsonObject.get("body"),
                 (String) jsonObject.get("html_url"),
-                (String) jsonObject.get("url")
+                (String) jsonObject.get("url"),
+                (String) jsonObject.get("upload_url")
                 );
         ret.initialCopy = ret.copy();
         return ret;
@@ -88,8 +91,12 @@ public class GitHubRelease {
         return apiUrl;
     }
 
+    public String getUploadUrl() {
+        return uploadUrl;
+    }
+
     public GitHubRelease copy(){
-        return new GitHubRelease(tagName, name, body, htmlUrl, apiUrl);
+        return new GitHubRelease(tagName, name, body, htmlUrl, apiUrl, uploadUrl);
     }
 
     @Override
@@ -114,5 +121,9 @@ public class GitHubRelease {
                 ", htmlUrl='" + htmlUrl + '\'' +
                 ", apiUrl='" + apiUrl + '\'' +
                 '}';
+    }
+
+    public void uploadArtifact(String s, byte[] bytes) throws IOException {
+        new GitHubAPIUploadReleaseAssetRequest<>(this, s, bytes).performRequest(true);
     }
 }

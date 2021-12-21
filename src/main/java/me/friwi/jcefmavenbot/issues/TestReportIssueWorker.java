@@ -5,10 +5,7 @@ import me.friwi.jcefmavenbot.github.GitHubAPIIssueLockReason;
 import me.friwi.jcefmavenbot.github.api.GitHubIssueComment;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class TestReportIssueWorker {
     public static String BOT_USER, MAINTAINER_USER;
@@ -60,7 +57,7 @@ public class TestReportIssueWorker {
             comment.append(". Please open another issue and report your findings again!");
             issue.getGitHubIssue().addComment(comment.toString());
             issue.getGitHubIssue().setAssignees(Collections.singletonList(BOT_USER));
-            issue.getGitHubIssue().setLabels(List.of(LABEL_INVALID));
+            issue.getGitHubIssue().setLabels(Arrays.asList(LABEL_INVALID));
             issue.getGitHubIssue().setOpen(false);
             issue.getGitHubIssue().setLocked(true);
             issue.getGitHubIssue().setActiveLockReason(GitHubAPIIssueLockReason.RESOLVED);
@@ -146,7 +143,7 @@ public class TestReportIssueWorker {
                     "\n@"+MAINTAINER_USER+" Conflicting test reports. Report resolve with `@"+BOT_USER+" resolve <working/broken>` on a separate line.";
             issue.getGitHubIssue().addComment(comment);
             issue.getGitHubIssue().setAssignees(Collections.singletonList(MAINTAINER_USER));
-            issue.getGitHubIssue().setLabels(List.of(LABEL_TEST_REPORT, LABEL_CONFLICT, getPlatformLabel(issue.getPlatform())));
+            issue.getGitHubIssue().setLabels(Arrays.asList(LABEL_TEST_REPORT, LABEL_CONFLICT, getPlatformLabel(issue.getPlatform())));
             return;
         }
 
@@ -160,7 +157,7 @@ public class TestReportIssueWorker {
                     "the artifact will remain marked as a conflict.";
             issue.getGitHubIssue().addComment(comment);
             issue.getGitHubIssue().setAssignees(Collections.singletonList(BOT_USER));
-            issue.getGitHubIssue().setLabels(List.of(LABEL_TEST_REPORT, LABEL_DUPLICATE, getPlatformLabel(issue.getPlatform())));
+            issue.getGitHubIssue().setLabels(Arrays.asList(LABEL_TEST_REPORT, LABEL_DUPLICATE, getPlatformLabel(issue.getPlatform())));
             issue.getGitHubIssue().setOpen(false);
             issue.getGitHubIssue().setLocked(true);
             issue.getGitHubIssue().setActiveLockReason(GitHubAPIIssueLockReason.RESOLVED);
@@ -178,7 +175,7 @@ public class TestReportIssueWorker {
                     "duplicate.";
             issue.getGitHubIssue().addComment(comment);
             issue.getGitHubIssue().setAssignees(Collections.singletonList(BOT_USER));
-            issue.getGitHubIssue().setLabels(List.of(LABEL_TEST_REPORT, LABEL_DUPLICATE, getPlatformLabel(issue.getPlatform())));
+            issue.getGitHubIssue().setLabels(Arrays.asList(LABEL_TEST_REPORT, LABEL_DUPLICATE, getPlatformLabel(issue.getPlatform())));
             issue.getGitHubIssue().setOpen(false);
             issue.getGitHubIssue().setLocked(true);
             issue.getGitHubIssue().setActiveLockReason(GitHubAPIIssueLockReason.RESOLVED);
@@ -197,7 +194,7 @@ public class TestReportIssueWorker {
                     "@"+MAINTAINER_USER+" Broken build reported. Report resolve with `@\"+BOT_USER+\" resolve <working/broken>` on a separate line.";
             issue.getGitHubIssue().addComment(comment);
             issue.getGitHubIssue().setAssignees(Collections.singletonList(MAINTAINER_USER));
-            issue.getGitHubIssue().setLabels(List.of(LABEL_TEST_REPORT, LABEL_BROKEN, getPlatformLabel(issue.getPlatform())));
+            issue.getGitHubIssue().setLabels(Arrays.asList(LABEL_TEST_REPORT, LABEL_BROKEN, getPlatformLabel(issue.getPlatform())));
             return;
         }
 
@@ -211,7 +208,7 @@ public class TestReportIssueWorker {
                 "artifact as tested and working.";
         issue.getGitHubIssue().addComment(comment);
         issue.getGitHubIssue().setAssignees(Collections.singletonList(BOT_USER));
-        issue.getGitHubIssue().setLabels(List.of(LABEL_TEST_REPORT, LABEL_WORKING, getPlatformLabel(issue.getPlatform())));
+        issue.getGitHubIssue().setLabels(Arrays.asList(LABEL_TEST_REPORT, LABEL_WORKING, getPlatformLabel(issue.getPlatform())));
         issue.getGitHubIssue().setOpen(false);
         issue.getGitHubIssue().setLocked(true);
         issue.getGitHubIssue().setActiveLockReason(GitHubAPIIssueLockReason.RESOLVED);
