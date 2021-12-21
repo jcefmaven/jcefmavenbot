@@ -43,7 +43,13 @@ public class BuildArtifactListGenerator {
 
     private static void recursiveGenerate(File mainDir, File dir, String path, BuildArtifactList list) {
         if(dir.isFile()){
-            list.addElement(new BuildArtifactElement(path+dir.getName(), dir.length()));
+            if(!dir.getName().endsWith(".java")
+                    &&!dir.getName().endsWith(".html")
+                    &&!dir.getName().endsWith(".css")
+                    &&!dir.getName().endsWith(".js")
+                    &&!dir.getName().endsWith(".png")) {
+                list.addElement(new BuildArtifactElement(path + dir.getName(), dir.length()));
+            }
         }else{
             Arrays.stream(dir.listFiles()).sorted((f1, f2)->{
                 if((f1.isDirectory() && f2.isDirectory()) || (f1.isFile() && f2.isFile())){
