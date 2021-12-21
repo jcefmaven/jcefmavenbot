@@ -68,8 +68,8 @@ public class BuildIssuer {
         System.out.println();
         System.out.println("jcefbuild releases fetched:");
         System.out.println(Arrays.toString(jcefbuild_commits.toArray(new String[0])));
-        for(Map.Entry<String, Integer> ent : commit_to_artifact_amount.entrySet()){
-            System.out.println(ent.getKey()+" -> "+ent.getValue()+" artifacts ("+commit_to_build_meta_url.get(ent.getKey())+")");
+        for(String commit : jcefbuild_commits){
+            System.out.println(commit+" -> "+commit_to_artifact_amount.get(commit)+" artifacts ("+commit_to_build_meta_url.get(commit)+")");
         }
 
         //Fetch release info of jcefmaven
