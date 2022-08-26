@@ -3,7 +3,6 @@ package me.friwi.jcefmavenbot.issues;
 public enum EnumPlatform {
     LINUX_AMD64(EnumOS.LINUX, EnumArch.AMD64),
     LINUX_ARM64(EnumOS.LINUX, EnumArch.ARM64),
-    LINUX_I386(EnumOS.LINUX, EnumArch.I386),
     LINUX_ARM(EnumOS.LINUX, EnumArch.ARM),
 
     WINDOWS_AMD64(EnumOS.WINDOWS, EnumArch.AMD64),

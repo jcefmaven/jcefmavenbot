@@ -73,6 +73,4 @@
 406481:/bin/lib/win64/locales/vi.pak
 298432:/bin/lib/win64/locales/zh-CN.pak
 295366:/bin/lib/win64/locales/zh-TW.pak
-410112:/bin/lib/win64/swiftshader/libEGL.dll
-15357440:/bin/lib/win64/swiftshader/libGLESv2.dll
 113:/docs/package-list

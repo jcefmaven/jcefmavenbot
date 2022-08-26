@@ -75,5 +75,3 @@
 401126:/bin/lib/linux64/locales/vi.pak
 294505:/bin/lib/linux64/locales/zh-CN.pak
 291366:/bin/lib/linux64/locales/zh-TW.pak
-1776376:/bin/lib/linux64/swiftshader/libEGL.so
-10950520:/bin/lib/linux64/swiftshader/libGLESv2.so

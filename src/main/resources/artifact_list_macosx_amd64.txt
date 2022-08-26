@@ -8,10 +8,6 @@
 188421944:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Chromium Embedded Framework
 330504:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/libEGL.dylib
 9701616:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/libGLESv2.dylib
-348944:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/libswiftshader_libEGL.dylib
-2588536:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/libswiftshader_libGLESv2.dylib
-4279392:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/libvk_swiftshader.dylib
-110:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/vk_swiftshader_icd.json
 1060:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/Info.plist
 522380:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/chrome_100_percent.pak
 934463:/bin/jcef_app.app/Contents/Frameworks/Chromium Embedded Framework.framework/Resources/chrome_200_percent.pak
